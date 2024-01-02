@@ -1,19 +1,20 @@
 import { Dimensions, Pressable, StyleSheet,Text,View } from "react-native";
 import react from 'react';
-import { Icon } from "react-native-vector-icons/Ionicons";
+import Icons from "react-native-vector-icons/Ionicons";
 
 const Homescreen=()=>{
     return(
         <View style={styles.container}>
             <Pressable>
             <View style={styles.ItemButton}>
-                <Text >ADD NEW NOTE</Text>
-                {/* <Ionicons name="arrow-forward-outline" /> */}
+                <Text style={styles.Title} >ADD NEW NOTE</Text>
+                <Icons style={ styles.Icons} name="arrow-forward-outline" />
                  </View>
             </Pressable>
             <Pressable>
             <View style={styles.ItemButton}>
-                <Text>ALL NOTES</Text>
+                <Text style={styles.Title}>ALL NOTES</Text>
+                <Icons style={styles.Icons}  name="arrow-forward-outline" />
             </View>
             </Pressable>
         </View>
@@ -27,7 +28,7 @@ const styles = StyleSheet.create({
     container: {
         flex:1,
         alignItems:"center",
-        marginTop:50,
+        marginTop:40,
     },
     spacer: {
         height:"3%",
@@ -43,5 +44,21 @@ const styles = StyleSheet.create({
         justifyContent:"center",
         alignItems:"center",
         backgroundColor:"#ff6",
+        elevation:10,
+        shadowOffset:{width:4,height:10},
+        shadowColor:"black",
+        shadowOpacity:0.3,
+        shadowRadius:4
+    },
+    Title:{
+        fontSize:30,
+        fontWeight:"bold",
+        textAlign:"center"
+    },
+    Icons:{
+        fontSize:30,
+        fontWeight:"bold",
+        textAlign:"center"
     }
+    
 })
