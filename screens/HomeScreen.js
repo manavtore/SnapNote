@@ -1,17 +1,19 @@
 import { Dimensions, Pressable, StyleSheet,Text,View } from "react-native";
 import react from 'react';
 import Icons from "react-native-vector-icons/Ionicons";
-
-const Homescreen=()=>{
+import { ScreenType } from "../constants/constants";
+import {NavigationContainer,navigate} from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+const Homescreen=({navigation})=>{
     return(
         <View style={styles.container}>
-            <Pressable>
+            <Pressable onPress={() => navigation.navigate('addNoteScreen', { name: 'AddNotesScreen' })}>
             <View style={styles.ItemButton}>
                 <Text style={styles.Title} >ADD NEW NOTE</Text>
                 <Icons style={ styles.Icons} name="arrow-forward-outline" />
                  </View>
             </Pressable>
-            <Pressable>
+            <Pressable onPress={() => navigation.navigate('allNoteScreen', { name: 'AllnotesScreen' })}>
             <View style={styles.ItemButton}>
                 <Text style={styles.Title}>ALL NOTES</Text>
                 <Icons style={styles.Icons}  name="arrow-forward-outline" />

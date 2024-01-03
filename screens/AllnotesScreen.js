@@ -1,12 +1,12 @@
-import { StyleSheet,Text,View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 
-const AllnotesScreen = () => {
-    return(
-        <view>
+const AllnotesScreen = ({Navigation,route}) => {
+    return (
+        <View>
             <Text>Text is </Text>
-        </view>
-    )
+        </View>
+    );
 }
 
 export default AllnotesScreen;
