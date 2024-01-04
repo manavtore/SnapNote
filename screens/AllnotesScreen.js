@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, FlatList } from 'react-native';
 import { useRealm, useQuery } from '@realm/react';
-
+import { Note } from '../models/Schemas';
 const AllNotesScreen = () => {
     const realm = useRealm();
     const notes = useQuery(() => realm.objects('Note'));
