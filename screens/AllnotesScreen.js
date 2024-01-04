@@ -1,19 +1,29 @@
-import { StyleSheet, Text, View } from "react-native";
-import React from "react";
+// AllNotesScreen.js
+import React from 'react';
+import { View, Text, FlatList } from 'react-native';
+import { useRealm, useQuery } from '@realm/react';
+import Note from '../path-to-your-note-file'; // Update the path accordingly
 
-const AllnotesScreen = ({Navigation,route}) => {
-    return (
-        <View>
-            <Text>Text is </Text>
-        </View>
-    );
-}
+const AllNotesScreen = () => {
+  const realm = useRealm();
+  const notes = useQuery(() => realm.objects('Note'));
 
-export default AllnotesScreen;
+  return (
+    <View>
+      <Text>All Notes</Text>
+      <FlatList
+        data={notes}
+        keyExtractor={(item) => item._id.toString()}
+        renderItem={({ item }) => (
+          <View>
+            <Text>{item.title}</Text>
+            <Text>{item.content}</Text>
+            <Text>{item.createdAt.toString()}</Text>
+          </View>
+        )}
+      />
+    </View>
+  );
+};
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        
-    }
-})
+export default AllNotesScreen;
