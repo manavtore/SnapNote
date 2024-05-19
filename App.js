@@ -17,12 +17,12 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Header/>
-      <Backbutton/>
+     {/* <Backbutton/>  */}
       <NavigationContainer>
         <Stack.Navigator>
         <Stack.Screen  name="Home" component={Homescreen}/>
         <Stack.Screen name='addNoteScreen' component={AddNotesScreen}/>
-        <Stack.Screen name='allNoteScreen' component={AllnotesScreen}/>
+         <Stack.Screen name='allNoteScreen' component={AllnotesScreen}/>
         </Stack.Navigator>
       </NavigationContainer>
       <StatusBar style="auto" />

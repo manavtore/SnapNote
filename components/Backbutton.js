@@ -1,14 +1,21 @@
 import { Button,StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-
-const Backbutton = () => {
+import { Navigation } from '@react-navigation/native';
+// import { NavigationContainer, navigate} from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+const Backbutton = ({navigation}) => {
   return (
     <View style={styles.container}>
       <View style={styles.button}>
-        <Button color={"yellow"} title="< Back"/>
+        <Button 
+          color={"yellow"} 
+          title="< Back" 
+          onPress={() => navigation.navigate('Homescreen')} 
+        />
       </View>
     </View>
-  )
+  );
+  
 }
 
 export default Backbutton;

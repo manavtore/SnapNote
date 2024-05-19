@@ -3,7 +3,6 @@ import react from 'react';
 import Icons from "react-native-vector-icons/Ionicons";
 import { ScreenType } from "../constants/constants";
 import {NavigationContainer,navigate} from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 const Homescreen=({navigation})=>{
     return(
         <View style={styles.container}>
@@ -13,6 +12,7 @@ const Homescreen=({navigation})=>{
                 <Icons style={ styles.Icons} name="arrow-forward-outline" />
                  </View>
             </Pressable>
+            <View style={styles.spacer}></View>
             <Pressable onPress={() => navigation.navigate('allNoteScreen', { name: 'AllnotesScreen' })}>
             <View style={styles.ItemButton}>
                 <Text style={styles.Title}>ALL NOTES</Text>

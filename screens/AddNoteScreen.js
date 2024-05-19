@@ -1,82 +1,75 @@
-import { TextInput,StyleSheet,Text,View, Button } from "react-native";
+import { TextInput, StyleSheet, Text, View, Button } from "react-native";
 import React, { useState } from "react";
-import {NavigationContainer} from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { BSON, UserState } from "realm/dist/bundle";
-import { useRealm } from "@realm/react";
+import Backbutton from "../components/Backbutton";
 
-const AddNotesScreen = ({}) => {
-    const realm = useRealm();
-    const [noteTitle,setNoteTitle] = useState('');
-    const [noteContent,setNoteContent] =useState('');
+const AddNotesScreen = ({ }) => {
+  const [title, setTitle] = useState("");
+  const [note, setNote] = useState("Edward newgato");
 
-    const handleAddNote = () =>{
-        if(noteTitle.trim()!==''){
-            realm.write(()=>{
-                realm.create('Note',{
-                    _id:new BSON.ObjectID(),
-                    title:noteTitle,
-                    content:noteContent,
-                    createAt:new Date(),
-                })
-            })
-            navigation.goBack();
-        }else{
-            console.warn('Note title cannot be empty')
-        }
-       
-    }
-    return(
-        <View style={styles.container}>
-            <View style={styles.fromContainer}>
-                <Text style={styles.title}>Add NOTE</Text>
-                <View>
-                    <TextInput/>
-                </View>
-                <View>
-                   <TextInput style={styles.Input} value={noteTitle}
-                    onChangeText= {(Text) => setNoteTitle(noteTitle)}
-                    placeholder="Enter note title"
-                   />
-                </View>
-                <View>
-                    <TextInput style={styles.Input} value={noteContent}
-                    onChangeText={(Text) => setNoteContent(noteContent)}
-                    placeholder="Enter the content"
-                    />
-                </View>
-                <Button title="Add" onPress={handleAddNote}/>
-            </View>
-        </View>
-    )
-}
+ const handleSubmit = () => {
+  alert(`Note saved: Title: ${title}, Note: ${note}`);
+  console.log('Title:', title);
+  console.log('Note:', note);
+};
+
+  return (
+    <View>
+      <TextInput
+        placeholder="Enter the title"
+        onChangeText={newTitle => setTitle(newTitle)}
+        style={styles.InputTitle}
+      />
+      <TextInput
+        placeholder="Enter the note"       
+        onChangeText={newNote => setNote(newNote)}
+        style={styles.Input}
+      />
+      <Button
+        title="Save Note"
+        color="#841584"
+        onPress={handleSubmit}
+      />
+    </View>
+  );
+};
 
 export default AddNotesScreen;
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1, 
-    },
-    title:{
-        fontSize:20,
-        fontWeight:"bold"
-    },
-    fromContainer:{
-        backgroundColor:"#f5f5f5",
-        padding:10,
-        marginVertical:10,
-        marginHorizontal:10,
-    },
-    Input:{
-        marginVertical:20,
-        width:'100%',
-        borderBottomWidth:4,
-        borderBottomColor:"#333333",
-        borderColor:"#333333",
-        fontSize:16,
-        padding:10
-
-
-    }
-
-})
+  container: {
+    flex: 1,
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: "bold",
+  },
+  fromContainer: {
+    backgroundColor: "#f5f5f5",
+    padding: 10,
+    marginVertical: 10,
+    marginHorizontal: 10,
+  },
+  InputTitle: {
+    marginVertical: 20,
+    width: 380,
+    borderWidth: 2,
+    borderColor: "#333333",
+    fontSize: 16,
+    alignContent: "center",
+    height: 40,
+    alignSelf: "center",
+  },
+  Input: {
+    marginVertical: 20,
+    width: 380,
+    borderWidth: 2,
+    borderColor: "#333333",
+    fontSize: 16,
+    padding: 10,
+    height: 400,
+    alignSelf: "center",
+    alignContent: "center",
+  },
+});
