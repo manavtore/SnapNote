@@ -3,15 +3,21 @@ import React, { useState } from "react";
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Backbutton from "../components/Backbutton";
-
+import axios from 'axios';
+import API_URL from "../components/constanst/constant";
 const AddNotesScreen = ({ }) => {
   const [title, setTitle] = useState("");
   const [note, setNote] = useState("Edward newgato");
 
  const handleSubmit = () => {
-  alert(`Note saved: Title: ${title}, Note: ${note}`);
+  const inputs = { title, note };
   console.log('Title:', title);
   console.log('Note:', note);
+  
+  axios.post("http://localhost:80/notesapp/index.php",inputs)
+
+  alert(inputs);
+
 };
 
   return (
