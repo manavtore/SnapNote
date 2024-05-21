@@ -3,6 +3,7 @@ import react from 'react';
 import Icons from "react-native-vector-icons/Ionicons";
 import { ScreenType } from "../components/constants/constants";
 import {NavigationContainer,navigate} from '@react-navigation/native';
+import NoteCard from "../components/card";
 const Homescreen=({navigation})=>{
     return(
         <View style={styles.container}>
@@ -19,6 +20,7 @@ const Homescreen=({navigation})=>{
                 <Icons style={styles.Icons}  name="arrow-forward-outline" />
             </View>
             </Pressable>
+            
         </View>
             
     )

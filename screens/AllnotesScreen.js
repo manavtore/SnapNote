@@ -6,7 +6,6 @@ const AllNotesScreen = () => {
     return (
       <View style={styles.container}>
         <NoteCard/>
-        <Text style={styles.header}>Notes</Text>
       </View>
     );
   };
