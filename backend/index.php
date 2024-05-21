@@ -1,14 +1,15 @@
-<?php
-
-    require_once ('./connection.php');
-
-    include 'DbConnect.php';
+<?php  
+    require 'DbConnect.php';
+    
     $objDb = new DbConnect();
     $conn = $objDb->connect();
     var_dump($conn);
 
+
     print_r(file_get_contents('php://input'));
+
     $method = $_SERVER['REQUEST_METHOD'];
+    echo " ($method) \n";
 
     switch($method){
         case "GET":
@@ -26,11 +27,12 @@
             echo json_encode($users);
             break;
         case "POST":
-            $user = file_get_contents('php://input');
-            $sql = "INSERT INTO notes(id, title, note ) VALUES (NULL, :title, :note)";
+            $user = json_decode(file_get_contents('php://input'));
+            $sql = "INSERT INTO notes(id, title, note ) VALUES (:id, :title, :note)";
             $stmt = $conn->prepare($sql);
-            $stmt->bindParam(':title', $user['title']);
-            $stmt->bindParam(':note', $user['note']);
+            $stmt->bindParam(':id', $user->id);
+            $stmt->bindParam(':title', $user->title);
+            $stmt->bindParam(':note', $user->note);
 
             if ($stmt->execute()) {
               $response = ['status' => 1, 'message' => 'Record created successfully.'];

@@ -1,7 +1,7 @@
 import { Dimensions, Pressable, StyleSheet,Text,View } from "react-native";
 import react from 'react';
 import Icons from "react-native-vector-icons/Ionicons";
-import { ScreenType } from "../constants/constants";
+import { ScreenType } from "../components/constants/constants";
 import {NavigationContainer,navigate} from '@react-navigation/native';
 const Homescreen=({navigation})=>{
     return(

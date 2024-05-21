@@ -1,9 +1,11 @@
 import React from 'react';
 import { View, Text, FlatList } from 'react-native';
 import { TextInput,StyleSheet} from "react-native";
+import NoteCard from '../components/card';
 const AllNotesScreen = () => {
     return (
       <View style={styles.container}>
+        <NoteCard/>
         <Text style={styles.header}>Notes</Text>
       </View>
     );

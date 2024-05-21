@@ -4,24 +4,46 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Backbutton from "../components/Backbutton";
 import axios from 'axios';
-import API_URL from "../components/constanst/constant";
+import { useNavigation } from '@react-navigation/native';
+
 const AddNotesScreen = ({ }) => {
   const [title, setTitle] = useState("");
   const [note, setNote] = useState("Edward newgato");
+  const [id, setId] = useState("");
 
- const handleSubmit = () => {
-  const inputs = { title, note };
-  console.log('Title:', title);
-  console.log('Note:', note);
+   const navigation = useNavigation();
+
+  const API_URL = "http://localhost/notesapp/index.php"
+
+ const handleSubmit = async () => {
+  const inputs = {id,title, note };
+
+  const headers = {
+    "Accept":"Application/json",
+    "content-type":"Application/json",
+    "Access-Control-Allow-Origin":"*"
+  }
+    try {
+      const response = await axios.post( API_URL, inputs,  { headers });
+      if (response.status === 200) {
+        alert("New note added successfully!");
+         navigation.navigate('Home');
+      } else {
+        alert("Failed to add note");
+      }
+    } catch (error) {
+      alert(error.response.data);
+    }
   
-  axios.post("http://localhost:80/notesapp/index.php",inputs)
-
-  alert(inputs);
-
 };
 
   return (
     <View>
+      <TextInput
+        placeholder="Enter the note number"
+        onChangeText={newID => setId(newID)}
+        style={styles.InputTitle}
+      />
       <TextInput
         placeholder="Enter the title"
         onChangeText={newTitle => setTitle(newTitle)}
