@@ -38,9 +38,9 @@ const NoteCard = () => {
       });
   };
 
-  // const editNote = (id) => {
-  //   navigation.navigate("editNotesScreen", { id });
-  // };
+  const editNote = (id) => {
+    navigation.navigate("editNoteScreen", { id });
+  };
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>

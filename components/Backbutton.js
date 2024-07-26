@@ -1,7 +1,6 @@
 import { Button,StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { Navigation } from '@react-navigation/native';
-// import { NavigationContainer, navigate} from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 const Backbutton = ({navigation}) => {
   return (
