@@ -1,0 +1,23 @@
+workflows:
+  android-workflow-id:
+    name: Android Sample Workflow
+    # .......
+    # .......
+    environment:
+      android_signing:
+        - keystore_reference
+    scripts: 
+      - name: Install yarn dependencies
+        script: |
+          yarn add
+      - name: Set Android SDK location
+        script: |
+          echo "sdk.dir=$ANDROID_SDK_ROOT" > "$CM_BUILD_DIR/android/local.properties"
+      - name: Build Android release
+        script: |
+          cd android
+          ./gradlew bundleRelease
+
+    artifacts:
+      - android/app/build/outputs/**/*.aab
+
