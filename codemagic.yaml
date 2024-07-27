@@ -5,7 +5,7 @@ workflows:
     # .......
     environment:
       android_signing:
-        - keystore_reference
+        - snapnote
     scripts: 
       - name: Install yarn dependencies
         script: |
